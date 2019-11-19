@@ -25,15 +25,15 @@ app.get('/', (req, res) => {
 	res.send("App is Running!");
 })
 
-app.post('/signin', (req, res) => {signin.handleSignin(req, res, db, bcrypt)})
+app.post(process.env.SIGNIN, (req, res) => {signin.handleSignin(req, res, db, bcrypt)})
 
-app.post('/register', (req, res) => {register.handleRegister(req, res, db, bcrypt)})
+app.post(process.env.REGISTER, (req, res) => {register.handleRegister(req, res, db, bcrypt)})
 
-app.get('/profile/:id', (req, res) => {profile.handleProfile(req, res, db)})
+app.get(process.env.PROFILE, (req, res) => {profile.handleProfile(req, res, db)})
 
-app.put('/image', (req, res) => {image.handleImage(req, res, db)})
+app.put(process.env.IMAGE, (req, res) => {image.handleImage(req, res, db)})
 
-app.post('/imageUrl', (req, res) => {image.handleApiCall(req, res)})
+app.post(process.env.IMAGEURL, (req, res) => {image.handleApiCall(req, res)})
 
 app.listen(PORT, ()=>{
 	console.log(`app is running on port ${PORT}`);
